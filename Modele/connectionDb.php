@@ -1,6 +1,6 @@
 <?php
 
-include_once 'tools.php';
+include_once 'Controller/tools.php';
 
 abstract class connectionDb
 {
@@ -36,6 +36,6 @@ abstract class connectionDb
 	}
 }
 
-$dbConnectionArray = array('localhost', 'giletjaune', 'test', 'test00');
+$dbConnectionArray = array('localhost', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 
 ?>
