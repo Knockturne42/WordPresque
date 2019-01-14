@@ -16,13 +16,13 @@ if(isset($_GET['generer'])) {
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 	$condition = 'idMot LIKE "'.$num.'" ';
 
-	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
+	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition, $orderby);
 
 	$selectMot->selectDb();
 	while(!($mot = $selectMot->queryDb->fetch()))
 	{
 			$num = rand(1, 150000);
-			$columnArray = array('*');
+			$columnArray = array('orthMot');
 			$valueArray = array('0');
 			// $dbConnectionArray = array('localhost', 'wordpresque', 'test', 'test00');
 			$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
