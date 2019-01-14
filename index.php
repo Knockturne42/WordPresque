@@ -8,7 +8,7 @@
 	<?php include 'Vue/header.php' ?>
 	<main>
 		<?php
-
+		include 'Vue/userChoice.php';
 		include 'Vue/random.php';
 
 		?>

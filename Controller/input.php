@@ -30,7 +30,7 @@ class input {
 
 	public function assembleInput()
 	{
-		$this->input = '<input type="'.$this->typeInput.'" name="'.$this->nameInput.'"'.($this->typeInput == "submit" ? 'value="envoyer">' : ">").'';
+		$this->input = '<input type="'.$this->typeInput.'" name="'.$this->nameInput.'"'.($this->typeInput == "submit" ? 'value="'.$this->nameInput.'">' : ">").'';
 		return $this->input;
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 
-include 'Controller/formulaire.php';
-include 'Modele/requete.php';
+include_once 'Controller/formulaire.php';
+include_once 'Modele/requete.php';
 
 $arrayInpName = array('generer');
 $arrayInptype = array('submit');
@@ -33,6 +33,8 @@ if(isset($_GET['generer'])) {
 			$selectMot->selectDb();
 	}
 	var_dump($mot);
+
+	
 }
 
 ?>
