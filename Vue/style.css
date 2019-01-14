@@ -11,3 +11,8 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.jeuDeMot span
+{
+	color: red;
+}

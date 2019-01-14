@@ -23,9 +23,14 @@ if(isset($_GET['userValue'])) {
 	{
 		array_push($arrayResult, $mot);
 	}
-	$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
-	$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot.'</span></p>';
-	echo $motFinal;
+	if (!$arrayResult)
+		echo "pas de correspondance trouve";
+	else
+	{
+		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
+		$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot.'</span></p>';
+		echo $motFinal;
+	}
 }
-
+	
 ?>
