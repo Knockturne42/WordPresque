@@ -36,6 +36,6 @@ abstract class connectionDb
 	}
 }
 
-$dbConnectionArray = array('localhost', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+// $dbConnectionArray = array('192.168.1.20:8080', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 
 ?>
