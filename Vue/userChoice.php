@@ -9,7 +9,7 @@ $userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype)
 $userForm->displayForm();
 
 if(isset($_GET['userValue'])) {
-	$search = substr($_GET['userValue'], -3);
+	$search = substr($_GET['userValue'], -2);
 	$columnArray = array('idMot', 'orthMot');
 	$valueArray = array('0', '1');
 	// $dbConnectionArray = array('localhost', 'wordpresque', 'test', 'test00');
@@ -24,7 +24,7 @@ if(isset($_GET['userValue'])) {
 		array_push($arrayResult, $mot);
 	}
 	$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
-	$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -3).'<span>'.$monMot.'</span></p>';
+	$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot.'</span></p>';
 	echo $motFinal;
 }
 

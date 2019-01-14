@@ -31,13 +31,7 @@ if(isset($_GET['generer'])) {
 
 			$selectMot->selectDb();
 	}
-<<<<<<< HEAD
-	var_dump($mot);
-
-	
-=======
 	echo $mot['orthMot'];
->>>>>>> 63604f662037715cc4dbdf144d1001ad62b70b16
 }
 
 ?>
