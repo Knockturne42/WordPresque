@@ -24,6 +24,8 @@ abstract class connectionDb
 	{
 		try{
 			$db = new PDO('mysql:host=' . $this->hostname . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpassword);
+			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    		$db->exec("SET NAMES utf8");
 			if (!empty($db))
 			{
 				$this->db = $db;

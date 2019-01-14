@@ -14,9 +14,8 @@ class requete extends connectionDb
 	private $condition;
 	private $setArray;
 	private $left;
-	private $orderby;
 
-	public function __construct($dbConnectionArray, $columnArray, $valueArray, $tableName, $left, $condition = '1 ', $orderby = null)
+	public function __construct($dbConnectionArray, $columnArray, $valueArray, $tableName, $left, $condition = '1 ')
 	{
 		$this->db = parent::__construct($dbConnectionArray[0], $dbConnectionArray[1], $dbConnectionArray[2], $dbConnectionArray[3]);
 		$this->columnArray = $columnArray;
@@ -44,20 +43,14 @@ class requete extends connectionDb
 			throw new Exception("property invalid", 1);
 	}
 
-	public function selectDbWhere()
+	public function selectDb()
 	{
 
 			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1');
 			var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1');
 			$this->queryDb->execute();
 	}
-	public function selectDbOrder()
-	{
 
-			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' ORDER BY '.$this->orderby);
-			var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' ORDER BY '.$this->orderby);
-			$this->queryDb->execute();
-	}
 	public function insertDb()
 	{
 		$this->queryDb = $this->db->prepare('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
