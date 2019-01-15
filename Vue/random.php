@@ -14,7 +14,6 @@ if(isset($_GET['generer'])) {
 		$num = rand(1, 145000);
 		$columnArray = array('orthMot');
 		$valueArray = array('0');
-		// $dbConnectionArray = array('localhost', 'wordpresque', 'test', 'test00');
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 		$condition = 'idMot LIKE "'.$num.'" ';
 
