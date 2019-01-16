@@ -15,10 +15,10 @@ class input {
 		$this->typeInput = $typeInput;
 		$this->classInput = $classInput; 
 	}
-    public function addClasse(){
-		$myClass= new classes($this->classInput);
-		$myClass= $myClass->assembleClasses();
-		return $myClass;
+    public function makeClasses($classInput){
+		$classInput= new classes($classInput);
+		$classInput= $classInput->assembleClasses();
+		return $classInput;
     }
 	public function __set($property, $value)
 	{
@@ -38,7 +38,7 @@ class input {
 
 	public function assembleInput()
 	{
-		$this->input = '<input '.addClasse().' type="'.$this->typeInput.'" name="'.$this->nameInput.'"'.($this->typeInput == "submit" ? 'value="'.$this->nameInput.'">' : ">").'';
+		$this->input = '<input '.$this->makeClasses($this->classInput).' type="'.$this->typeInput.'" name="'.$this->nameInput.'"'.($this->typeInput == "submit" ? 'value="'.$this->nameInput.'">' : ">").'';
 		return $this->input;
 	}
 }

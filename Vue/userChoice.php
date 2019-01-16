@@ -5,7 +5,8 @@ include_once 'Modele/requete.php';
 
 $arrayInpName = array('userValue', "generer a partir d'un mot");
 $arrayInptype = array('text', "submit");
-$userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype);
+$arrayInpClass = array('', 'btn btn-primary');
+$userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype, $arrayInpClass);
 $userForm->displayForm();
 
 if(isset($_GET['userValue'])) {

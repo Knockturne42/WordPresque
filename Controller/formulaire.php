@@ -48,7 +48,7 @@ class formulaire {
 
 	public function displayForm()
 	{
-		if(count($this->arrayNameInput) === count($this->arrayTypeInput))
+		if(count($this->arrayNameInput) === count($this->arrayTypeInput) && count($this->arrayNameInput) === count($this->arrayClasses))
 		{
 			echo $this->formDebut;
 			echo $this->arrayInputs($this->arrayNameInput, $this->arrayTypeInput, $this->arrayClasses);

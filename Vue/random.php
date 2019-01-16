@@ -5,8 +5,8 @@ include_once 'Modele/requete.php';
 
 $arrayInpName = array('generer');
 $arrayInptype = array('submit');
-$arrayClasse = array('btn btn-primary');
-$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayClasse);
+$arrayInpClass = array('btn btn-primary');
+$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
 $randomForm->displayForm();
 
 
@@ -15,6 +15,7 @@ if(isset($_GET['generer'])) {
 		$num = rand(1, 145000);
 		$columnArray = array('orthMot');
 		$valueArray = array('0');
+		// $dbConnectionArray = array('localhost', 'wordpresque', 'test', 'test00');
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 		$condition = 'idMot LIKE "'.$num.'" ';
 
@@ -47,14 +48,8 @@ if(isset($_GET['generer'])) {
 		{
 			array_push($arrayResult, $mot);
 		}
-		if (!$arrayResult)
-			return 0;
-		else
-		{
-			$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
-			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -2).'<span>'.$monMot.'</span></p>';
-			return $motFinal;
-		}
+		
+		
 	}
 	$mot = null;
 	while (!$mot)

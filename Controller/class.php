@@ -7,6 +7,7 @@ class classes{
     public function __construct($contentClasses)
     {
         $this->contentClasses = $contentClasses;
+        $this->classe = '';
     }
     public function __set($property, $value)
 	{
@@ -25,7 +26,7 @@ class classes{
     }
     public function assembleClasses()
 	{
-		$this->classe = 'class="'.$this->contentClasses.'" ';
+		$this->classe = ' class="'.$this->contentClasses.'" ';
 		return $this->classe;
 	}
     
