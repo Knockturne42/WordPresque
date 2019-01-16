@@ -5,7 +5,8 @@ include_once 'Modele/requete.php';
 
 $arrayInpName = array('generer');
 $arrayInptype = array('submit');
-$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype);
+$arrayClasse = array('btn btn-primary');
+$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayClasse);
 $randomForm->displayForm();
 
 

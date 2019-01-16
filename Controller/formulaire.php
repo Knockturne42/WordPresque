@@ -8,13 +8,15 @@ class formulaire {
 	private $formFin;
 	private $arrayNameInput;
 	private $arrayTypeInput;
+	private $arrayClasses; 
 
 
-	public function __construct($actionForm, $methodForm, $nameForm, $arrayNameInput, $arrayTypeInput)
+	public function __construct($actionForm, $methodForm, $nameForm, $arrayNameInput, $arrayTypeInput, $arrayClasses)
 	{
 		$this->formDebut = '<form action="'.$actionForm.'" method="'.$methodForm.'" name="'.$nameForm.'">';
 		$this->arrayNameInput = $arrayNameInput;
 		$this->arrayTypeInput = $arrayTypeInput;
+		$this->arrayClasses = $arrayClasses;
 		$this->formFin = '</form>';
 	}
 
@@ -34,11 +36,11 @@ class formulaire {
 			throw new Exception("property invalid", 1);
 	}
 
-	public function arrayInputs($arrayNameInput, $arrayTypeInput)
+	public function arrayInputs($arrayNameInput, $arrayTypeInput, $arrayClasses)
 	{
 		$input = '';
 		foreach ($arrayNameInput as $key => $value) {
-			$tmp = new input($arrayNameInput[$key], $arrayTypeInput[$key]);
+			$tmp = new input($arrayNameInput[$key], $arrayTypeInput[$key], $arrayClasses[$key]);
 			$input .= $tmp->assembleInput();
 		}
 		return $input;
@@ -49,7 +51,7 @@ class formulaire {
 		if(count($this->arrayNameInput) === count($this->arrayTypeInput))
 		{
 			echo $this->formDebut;
-			echo $this->arrayInputs($this->arrayNameInput, $this->arrayTypeInput);
+			echo $this->arrayInputs($this->arrayNameInput, $this->arrayTypeInput, $this->arrayClasses);
 			echo $this->formFin;
 		}
 		else {

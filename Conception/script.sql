@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS Association; 
 DROP TABLE IF EXISTS association; 
 CREATE TABLE association (idAssoc INT AUTO_INCREMENT NOT NULL, 
 motAssoc VARCHAR(50), 
