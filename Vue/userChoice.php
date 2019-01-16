@@ -22,14 +22,28 @@ if(isset($_GET['userValue'])) {
 	$arrayResult = array();
 	while($mot = $selectMot->queryDb->fetch())
 	{
-		array_push($arrayResult, $mot);
+		$tmpArray = array($mot, 1);
+		array_push($arrayResult, $tmpArray);
+	}
+	$search = substr($_GET['userValue'], 0, 3);
+	$condition = 'orthMot LIKE "%'.$search.'" ';
+	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
+	$selectMot->selectDb();
+	while($mot = $selectMot->queryDb->fetch())
+	{
+		$tmpArray = array($mot, 2);
+		array_push($arrayResult, $tmpArray);
 	}
 	if (!$arrayResult)
 		echo "pas de correspondance trouve";
 	else
 	{
-		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
-		$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot.'</span></p>';
+		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)];
+		echo $monMot[0]['orthMot'];
+		if ($monMot[1] == 1)
+			$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot[0]['orthMot'].'</span></p>';
+		else
+			$motFinal = '<p class="jeuDeMot"><span>'.substr($monMot[0]['orthMot'], 0, -2).'</span>'.$_GET['userValue'].'</p>';
 		echo $motFinal;
 	}
 }

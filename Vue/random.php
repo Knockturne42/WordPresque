@@ -48,8 +48,14 @@ if(isset($_GET['generer'])) {
 		{
 			array_push($arrayResult, $mot);
 		}
-		
-		
+		if (!$arrayResult)
+			return 0;
+		else
+		{
+			$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
+			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -2).'<span>'.$monMot.'</span></p>';
+			return $motFinal;
+		}
 	}
 	$mot = null;
 	while (!$mot)
