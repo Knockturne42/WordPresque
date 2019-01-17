@@ -3,11 +3,11 @@
 include_once 'Controller/formulaire.php';
 include_once 'Modele/requete.php';
 
-$arrayInpName = array('generer');
-$arrayInptype = array('submit');
-$arrayInpClass = array('btn btn-primary');
-$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
-$randomForm->displayForm();
+// $arrayInpName = array('generer');
+// $arrayInptype = array('submit');
+// $arrayInpClass = array('btn btn-primary');
+// $randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
+// $randomForm->displayForm();
 
 
 if(isset($_GET['generer'])) {
@@ -64,6 +64,10 @@ if(isset($_GET['generer'])) {
 				$columnArray= array('idAssoc', 'motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
 				$valueArray= array($motInit, $monMot);
 				$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+
+				if(isset($_GET['Valider ce mot'])){
+
+				}
 			}
 			echo $motFinal;
 			validerMot($motInit, $monMot);

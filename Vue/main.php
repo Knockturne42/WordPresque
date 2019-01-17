@@ -1,13 +1,11 @@
 <div class="container">
+<form action="#">
 <div class="row">
-<button class="col btn btn-lg btn-outline-dark" type="button" data-toggle="collapse" data-target="#random" aria-expanded="false" aria-controls="random">
-    Jeu de mot aléatoire
-</button>
-<button class="col btn btn-lg btn-outline-dark" type="button" data-toggle="collapse" data-target="#userChoice" aria-expanded="false" aria-controls="userChoice">
-    Choisissez le mot à mixer
-</button>
+<input name="generer" value="Jeu de mot aléatoire" class="col btn btn-lg btn-outline-dark" type="submit" data-toggle="collapse" data-target="#random" aria-expanded="false" aria-controls="random">
+<input class="col btn btn-lg btn-outline-dark" value="Choisissez le mot à mixer" type="submit" data-toggle="collapse" data-target="#userChoice" aria-expanded="false" aria-controls="userChoice">
 </div>
 </div>
+</form>
 <div class="container">
 <div class="collapse" id="random">
   <div class="card card-body" id="resultRandom">
