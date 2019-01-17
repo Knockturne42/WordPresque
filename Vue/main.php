@@ -10,12 +10,12 @@
 </div>
 <div class="container">
 <div class="collapse" id="random">
-  <div class="card card-body">
+  <div class="card card-body" id="resultRandom">
     <?php include 'random.php' ?>
   </div>
 </div>
 <div class="collapse" id="userChoice">
-  <div class="card card-body">
+  <div class="card card-body" id="resultUserchoice">
     <?php include 'userChoice.php' ?>
   </div>
 </div>

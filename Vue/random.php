@@ -54,7 +54,22 @@ if(isset($_GET['generer'])) {
 		{
 			$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
 			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -2).'<span>'.$monMot.'</span></p>';
+			function validerMot($motInit, $monMot){
+				$arrayInpName = array($motInit , $monMot, 'Valider ce mot');
+				$arrayInptype = array('hidden', 'hidden', 'submit');
+				$arrayInpClass = array('', '', 'btn btn-success');
+				$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
+				$randomForm->displayForm();
+
+				$columnArray= array('idAssoc', 'motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
+				$valueArray= array($motInit, $monMot);
+				$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+			}
+			echo $motFinal;
+			validerMot($motInit, $monMot);
+			
 			return $motFinal;
+			
 		}
 	}
 	$mot = null;
@@ -62,7 +77,7 @@ if(isset($_GET['generer'])) {
 	{
 		$mot = generer();
 	}
-	echo $mot;
+	
 }
 
 ?>
