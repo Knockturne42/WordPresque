@@ -10,20 +10,35 @@ include_once 'Modele/requete.php';
 // $randomForm->displayForm();
 
 function validerMot($motFinalDb, $motInit, $monMot){
-	$arrayInpName = array($motInit , $monMot, 'Valider ce mot');
-	$arrayInptype = array('hidden', 'hidden', 'submit');
-	$arrayInpClass = array('', '', 'btn btn-success');
-	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
+	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', 'enregistrer');
+	$arrayInpValue = array($motFinalDb, $motInit , $monMot, 'Valider ce mot');
+	$arrayInptype = array('hidden', 'hidden', 'hidden', 'submit');
+	$arrayInpClass = array('', '', '', 'btn btn-success');
+	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
 	$randomForm->displayForm();
 }
 
-if(isset($_GET['Valider ce mot'])){
-	echo "coucou";
+if(isset($_GET['enregistrer'])){
+	var_dump($_GET);
+
+	$columnArray = array('*');
+	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
-	$columnArray= array('motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
-	$valueArray= array($motFinalDb, $motInit, $monMot, 1, 0, date("Y-m-d H:i:s"));
-	$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
-	$insertMots->insertDb();
+	$condition = 'motAssoc LIKE "'.$_GET['motFinalDb'].'" ';
+	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+	$selectMot->selectDb();
+
+	if (!($dbMot = $selectMot->queryDb->fetch()))
+	{
+		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+		$columnArray= array('motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
+		$valueArray= array($_GET['motFinalDb'], $_GET['motInit'], $_GET['monMot'], 1, 0, date("Y-m-d H:i:s"));
+		$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
+		$insertMots->insertDb();
+	}
+	else {
+		echo "mot deja enregistrer";
+	}
 }
 
 if(isset($_GET['generer'])) {
@@ -76,8 +91,17 @@ if(isset($_GET['generer'])) {
 			echo '<h3 class="card-title">';
 			echo $motFinal;
 			echo '</h3>';
-			validerMot($motFinalDb, $motInit, $monMot);
-			
+			$columnArray = array('*');
+			$valueArray = array('0');
+			$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+			$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
+
+			$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+			$selectMot->selectDb();
+			if (!($dbMot = $selectMot->queryDb->fetch()))
+				validerMot($motFinalDb, $motInit, $monMot);
+			else
+				echo "nom existant dans la db";
 			return $motFinal;
 			
 		}

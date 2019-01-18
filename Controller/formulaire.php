@@ -8,15 +8,17 @@ class formulaire {
 	private $formFin;
 	private $arrayNameInput;
 	private $arrayTypeInput;
-	private $arrayClasses; 
+	private $arrayClassesInput;
+	private $arrayValueInput;
 
 
-	public function __construct($actionForm, $methodForm, $nameForm, $arrayNameInput, $arrayTypeInput, $arrayClasses)
+	public function __construct($actionForm, $methodForm, $nameForm, $arrayNameInput, $arrayTypeInput, $arrayValueInput, $arrayClassesInput)
 	{
 		$this->formDebut = '<form action="'.$actionForm.'" method="'.$methodForm.'" name="'.$nameForm.'">';
 		$this->arrayNameInput = $arrayNameInput;
 		$this->arrayTypeInput = $arrayTypeInput;
-		$this->arrayClasses = $arrayClasses;
+		$this->arrayClassesInput = $arrayClassesInput;
+		$this->arrayValueInput = $arrayValueInput;
 		$this->formFin = '</form>';
 	}
 
@@ -36,11 +38,11 @@ class formulaire {
 			throw new Exception("property invalid", 1);
 	}
 
-	public function arrayInputs($arrayNameInput, $arrayTypeInput, $arrayClasses)
+	public function arrayInputs($arrayNameInput, $arrayTypeInput, $arrayValueInput, $arrayClassesInput)
 	{
 		$input = '';
 		foreach ($arrayNameInput as $key => $value) {
-			$tmp = new input($arrayNameInput[$key], $arrayTypeInput[$key], $arrayClasses[$key]);
+			$tmp = new input($arrayNameInput[$key], $arrayTypeInput[$key], $arrayValueInput[$key], $arrayClassesInput[$key]);
 			$input .= $tmp->assembleInput();
 		}
 		return $input;
@@ -48,10 +50,10 @@ class formulaire {
 
 	public function displayForm()
 	{
-		if(count($this->arrayNameInput) === count($this->arrayTypeInput) && count($this->arrayNameInput) === count($this->arrayClasses))
+		if(count($this->arrayNameInput) === count($this->arrayTypeInput) && count($this->arrayNameInput) === count($this->arrayClassesInput) && count($this->arrayNameInput) === count($this->arrayValueInput))
 		{
 			echo $this->formDebut;
-			echo $this->arrayInputs($this->arrayNameInput, $this->arrayTypeInput, $this->arrayClasses);
+			echo $this->arrayInputs($this->arrayNameInput, $this->arrayTypeInput, $this->arrayValueInput, $this->arrayClassesInput);
 			echo $this->formFin;
 		}
 		else {

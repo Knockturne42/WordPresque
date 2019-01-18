@@ -6,14 +6,16 @@ class input {
 	
 	private $nameInput;
 	private $typeInput;
+	private $valueInput;
 	private $input;
 	private $classInput;
 
-	public function __construct($nameInput, $typeInput, $classInput)
+	public function __construct($nameInput, $typeInput, $valueInput, $classInput)
 	{
 		$this->nameInput = $nameInput;
 		$this->typeInput = $typeInput;
-		$this->classInput = $classInput; 
+		$this->classInput = $classInput;
+		$this->valueInput = $valueInput;
 	}
     public function makeClasses($classInput){
 		$classInput= new classes($classInput);
@@ -38,7 +40,7 @@ class input {
 
 	public function assembleInput()
 	{
-		$this->input = '<input '.$this->makeClasses($this->classInput).' type="'.$this->typeInput.'" name="'.$this->nameInput.'"'.($this->typeInput == "submit" ? 'value="'.$this->nameInput.'">' : ">").'';
+		$this->input = '<input '.$this->makeClasses($this->classInput).' type="'.$this->typeInput.'" name="'.$this->nameInput.'" value="'.$this->valueInput.'">';
 		return $this->input;
 	}
 }
