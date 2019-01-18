@@ -9,6 +9,22 @@ include_once 'Modele/requete.php';
 // $randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
 // $randomForm->displayForm();
 
+function validerMot($motFinalDb, $motInit, $monMot){
+	$arrayInpName = array($motInit , $monMot, 'Valider ce mot');
+	$arrayInptype = array('hidden', 'hidden', 'submit');
+	$arrayInpClass = array('', '', 'btn btn-success');
+	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
+	$randomForm->displayForm();
+}
+
+if(isset($_GET['Valider ce mot'])){
+	echo "coucou";
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$columnArray= array('motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
+	$valueArray= array($motFinalDb, $motInit, $monMot, 1, 0, date("Y-m-d H:i:s"));
+	$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
+	$insertMots->insertDb();
+}
 
 if(isset($_GET['generer'])) {
 	echo '<div class="card w-90 text-white bg-dark text-center">';
@@ -55,26 +71,12 @@ if(isset($_GET['generer'])) {
 		else
 		{
 			$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
+			$motFinalDb = substr($motInit, 0, -2).$monMot;
 			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -2).'<span>'.$monMot.'</span></p>';
-			function validerMot($motInit, $monMot){
-				$arrayInpName = array($motInit , $monMot, 'Valider ce mot');
-				$arrayInptype = array('hidden', 'hidden', 'submit');
-				$arrayInpClass = array('', '', 'btn btn-success');
-				$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
-				$randomForm->displayForm();
-
-				$columnArray= array('idAssoc', 'motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
-				$valueArray= array($motInit, $monMot);
-				$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
-
-				if(isset($_GET['Valider ce mot'])){
-
-				}
-			}
 			echo '<h3 class="card-title">';
 			echo $motFinal;
 			echo '</h3>';
-			validerMot($motInit, $monMot);
+			validerMot($motFinalDb, $motInit, $monMot);
 			
 			return $motFinal;
 			
@@ -85,8 +87,10 @@ if(isset($_GET['generer'])) {
 	{
 		$mot = generer();
 	}
+
 	echo '</div></div>';
 	
 }
 
 ?>
+

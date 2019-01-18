@@ -27,7 +27,7 @@ if(isset($_GET['userValue'])) {
 		$tmpArray = array($mot, 1);
 		array_push($arrayResult, $tmpArray);
 	}
-	$search = substr($_GET['userValue'], 0, 3);
+	$search = substr($_GET['userValue'], 0, 2);
 	$condition = 'orthMot LIKE "%'.$search.'" ';
 	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
 	$selectMot->selectDb();
