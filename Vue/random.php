@@ -11,6 +11,8 @@ include_once 'Modele/requete.php';
 
 
 if(isset($_GET['generer'])) {
+	echo '<div class="card w-90 text-white bg-dark text-center">';
+	echo '<div class="card-body">';
 	function generer() {
 		$num = rand(1, 145000);
 		$columnArray = array('orthMot');
@@ -69,7 +71,9 @@ if(isset($_GET['generer'])) {
 
 				}
 			}
+			echo '<h3 class="card-title">';
 			echo $motFinal;
+			echo '</h3>';
 			validerMot($motInit, $monMot);
 			
 			return $motFinal;
@@ -81,6 +85,7 @@ if(isset($_GET['generer'])) {
 	{
 		$mot = generer();
 	}
+	echo '</div></div>';
 	
 }
 

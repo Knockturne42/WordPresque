@@ -3,13 +3,15 @@
 include_once 'Controller/formulaire.php';
 include_once 'Modele/requete.php';
 
-$arrayInpName = array('userValue', "generer a partir d'un mot");
-$arrayInptype = array('text', "submit");
-$arrayInpClass = array('', 'btn btn-primary');
-$userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype, $arrayInpClass);
-$userForm->displayForm();
+// $arrayInpName = array('userValue', "generer a partir d'un mot");
+// $arrayInptype = array('text', "submit");
+// $arrayInpClass = array('', 'btn btn-primary');
+// $userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype, $arrayInpClass);
+// $userForm->displayForm();
 
 if(isset($_GET['userValue'])) {
+	echo '<div class="card w-50 text-white bg-dark text-center">';
+	echo '<div class="card-body">';
 	$search = substr($_GET['userValue'], -2);
 	$columnArray = array('idMot', 'orthMot');
 	$valueArray = array('0', '1');
@@ -39,13 +41,15 @@ if(isset($_GET['userValue'])) {
 	else
 	{
 		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)];
-		echo $monMot[0]['orthMot'];
 		if ($monMot[1] == 1)
 			$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot[0]['orthMot'].'</span></p>';
 		else
 			$motFinal = '<p class="jeuDeMot"><span>'.substr($monMot[0]['orthMot'], 0, -2).'</span>'.$_GET['userValue'].'</p>';
+		echo '<h3 class="card-title">';
 		echo $motFinal;
+		echo '</h3>';
 	}
+	echo '</div></div>';
 }
 	
 ?>
