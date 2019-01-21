@@ -1,5 +1,5 @@
 <header>
 <div id="containerLogo">
-    <img id="logo" src="Conception/icon.png" alt="Logo Wordpresque">
+    <a href="index.php" id="logo"><img src="Conception/icon.png" alt="Logo Wordpresque"></a>
 </div>
 </header>

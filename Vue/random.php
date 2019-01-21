@@ -12,9 +12,7 @@ function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
 	$randomForm->displayForm();
 }
 
-if(isset($_GET['enregistrer'])){
-	var_dump($_GET);
-
+if(isset($_GET['enregistrerRnd'])){
 	$columnArray = array('*');
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');

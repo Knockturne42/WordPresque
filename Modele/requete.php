@@ -54,7 +54,7 @@ class requete extends connectionDb
 	public function insertDb()
 	{
 		$this->queryDb = $this->db->prepare('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
-		var_dump('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
+		//var_dump('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
 		$this->arrayBindParam($this->columnArray);
 		$this->queryDb->execute();
 	}

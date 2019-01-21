@@ -1,9 +1,10 @@
 <div class="container">
-<div class="row justify-content-center">
+<div id="rndDiv" class="row justify-content-center">
     <div class="col-lg-6 col-md-9">
-        <form action="#">
+        <div id="generer" class="boutons col btn btn-lg btn-outline-dark"></div>
+<!--         <form action="#">
             <input name="generer" value="Jeu de mot aléatoire" class="boutons col btn btn-lg btn-outline-dark" type="submit" id="generer">
-        </form>            
+        </form>   -->          
     </div>
     <div class="col-lg-6 col-md-9">
         <form action="#">
@@ -11,7 +12,7 @@
         </form>
     </div>
 </div>
-<div class="container">
+<div class="container" id="result">
     <div class="row justify-content-center">
         <?php include 'random.php' ?>
     </div>

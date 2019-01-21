@@ -12,6 +12,16 @@
     margin-right: auto;
 }
 
+#logo img {
+    width: 100%;
+    height: 100%;
+}
+
+#listeJeux {
+    background-color: red;
+    width: 80%;
+}
+
 .jeuDeMot span
 {
 	color: red;

@@ -4,8 +4,6 @@ include_once 'Controller/formulaire.php';
 include_once 'Modele/requete.php';
 
 if(isset($_GET['enregistrerInp'])){
-	var_dump($_GET);
-
 	$columnArray = array('*');
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
