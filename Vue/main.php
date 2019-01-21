@@ -16,6 +16,4 @@
 <div class="container" id="result">
     <div class="row justify-content-center">
     </div>
-    <div class="row justify-content-center">
-    </div>
 </div>

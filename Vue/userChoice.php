@@ -49,10 +49,11 @@ if(isset($_GET['submitDefChoice'])){
 	echo '</div></div>';
 }
 if(isset($_GET['enregistrerInp'])){
+	$motFinalDb = $_GET['motFinalDb'];
 	$columnArray = array('*');
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
-	$condition = 'motAssoc LIKE "'.$_GET['motFinalDb'].'" ';
+	$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
 	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
 	$selectMot->selectDb();
 

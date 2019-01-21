@@ -62,9 +62,19 @@ function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
 	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', $nameSubmit);
 	$arrayInpValue = array($motFinalDb, $motInit , $monMot, 'Valider ce mot');
 	$arrayInptype = array('hidden', 'hidden', 'hidden', 'submit');
-	$arrayInpClass = array('', '', '', 'btn btn-success');
-	$randomForm = new formulaire('#', 'get', $nameForm, $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
-	$randomForm->displayForm();
+	$arrayInpClass = array('" id="motDb', '" id="mot1', '" id="mot2', 'btn btn-success" id="validerMot');
+	$randomForm = arrayInputs($arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+	echo $randomForm;
 }
+
+function arrayInputs($arrayNameInput, $arrayTypeInput, $arrayValueInput, $arrayClassesInput)
+	{
+		$input = '';
+		foreach ($arrayNameInput as $key => $value) {
+			$tmp = new input($arrayNameInput[$key], $arrayTypeInput[$key], $arrayValueInput[$key], $arrayClassesInput[$key]);
+			$input .= $tmp->assembleInput();
+		}
+		return $input;
+	}
 
 ?>
