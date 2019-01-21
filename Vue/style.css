@@ -31,3 +31,14 @@
     margin-top:2.5%;
     margin-bottom: 2.5%;
 }
+#boutonsMain{
+    width:100%;
+    height:100%;
+    background-color: rgb(116, 35, 35);
+}
+.boutons::placeholder{
+    opacity: 1;
+}
+.card{
+    margin-top:5%;
+}
