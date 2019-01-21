@@ -3,18 +3,12 @@
 include_once 'Controller/formulaire.php';
 include_once 'Modele/requete.php';
 
-// $arrayInpName = array('generer');
-// $arrayInptype = array('submit');
-// $arrayInpClass = array('btn btn-primary');
-// $randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpClass);
-// $randomForm->displayForm();
-
-function validerMot($motFinalDb, $motInit, $monMot){
-	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', 'enregistrer');
+function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
+	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', $nameSubmit);
 	$arrayInpValue = array($motFinalDb, $motInit , $monMot, 'Valider ce mot');
 	$arrayInptype = array('hidden', 'hidden', 'hidden', 'submit');
 	$arrayInpClass = array('', '', '', 'btn btn-success');
-	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+	$randomForm = new formulaire('#', 'get', $nameForm, $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
 	$randomForm->displayForm();
 }
 
@@ -99,7 +93,7 @@ if(isset($_GET['generer'])) {
 			$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
 			$selectMot->selectDb();
 			if (!($dbMot = $selectMot->queryDb->fetch()))
-				validerMot($motFinalDb, $motInit, $monMot);
+				validerMot($motFinalDb, $motInit, $monMot, 'random', 'enregistrerRnd');
 			else
 				echo "nom existant dans la db";
 			return $motFinal;

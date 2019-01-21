@@ -3,11 +3,29 @@
 include_once 'Controller/formulaire.php';
 include_once 'Modele/requete.php';
 
-// $arrayInpName = array('userValue', "generer a partir d'un mot");
-// $arrayInptype = array('text', "submit");
-// $arrayInpClass = array('', 'btn btn-primary');
-// $userForm = new formulaire('#', 'get', 'userForm', $arrayInpName, $arrayInptype, $arrayInpClass);
-// $userForm->displayForm();
+if(isset($_GET['enregistrerInp'])){
+	var_dump($_GET);
+
+	$columnArray = array('*');
+	$valueArray = array('0');
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$condition = 'motAssoc LIKE "'.$_GET['motFinalDb'].'" ';
+	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+	$selectMot->selectDb();
+
+	if (!($dbMot = $selectMot->queryDb->fetch()))
+	{
+		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+		$columnArray= array('motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
+		$valueArray= array($_GET['motFinalDb'], $_GET['motInit'], $_GET['monMot'], 1, 0, date("Y-m-d H:i:s"));
+		$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
+		$insertMots->insertDb();
+	}
+	else {
+		echo "mot deja enregistrer";
+	}
+}
+
 
 if(isset($_GET['userValue'])) {
 	echo '<div class="card w-50 text-white bg-dark text-center">';
@@ -42,12 +60,22 @@ if(isset($_GET['userValue'])) {
 	{
 		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)];
 		if ($monMot[1] == 1)
+		{
+			$motFinalDb = substr($_GET['userValue'], 0, -2).$monMot[0]['orthMot'];
 			$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot[0]['orthMot'].'</span></p>';
+		}
 		else
+		{
+			$motFinalDb = substr($monMot[0]['orthMot'], 0, -2).$_GET['userValue'];
 			$motFinal = '<p class="jeuDeMot"><span>'.substr($monMot[0]['orthMot'], 0, -2).'</span>'.$_GET['userValue'].'</p>';
+		}
 		echo '<h3 class="card-title">';
 		echo $motFinal;
 		echo '</h3>';
+		if (!($dbMot = $selectMot->queryDb->fetch()))
+				validerMot($motFinalDb, $_GET['userValue'], $monMot[0]['orthMot'], 'valideInput', 'enregistrerInp');
+		else
+			echo "nom existant dans la db";
 	}
 	echo '</div></div>';
 }
