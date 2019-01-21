@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Controller/tools.php';
+include_once '../Controller/tools.php';
 
 
 abstract class connectionDb
@@ -24,7 +24,7 @@ abstract class connectionDb
 	public function connectDb()
 	{
 		/* Récupération du contenu du fichier .json */
-		$contenu_fichier_json = file_get_contents('Modele/infos.json');
+		$contenu_fichier_json = file_get_contents('../Modele/infos.json');
 		/* Les données sont récupérées sous forme de tableau (true) */
 		$dbInfos = json_decode($contenu_fichier_json, true);
 		try{

@@ -1,16 +1,8 @@
 <?php
 
-include_once 'Controller/formulaire.php';
-include_once 'Modele/requete.php';
-
-function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
-	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', $nameSubmit);
-	$arrayInpValue = array($motFinalDb, $motInit , $monMot, 'Valider ce mot');
-	$arrayInptype = array('hidden', 'hidden', 'hidden', 'submit');
-	$arrayInpClass = array('', '', '', 'btn btn-success');
-	$randomForm = new formulaire('#', 'get', $nameForm, $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
-	$randomForm->displayForm();
-}
+include_once '../Controller/formulaire.php';
+include_once '../Modele/requete.php';
+include_once '../Controller/tools.php';
 
 if(isset($_GET['submitDef'])){
 	//Insertion de la définition dans def

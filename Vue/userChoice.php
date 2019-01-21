@@ -1,7 +1,8 @@
 <?php
 
-include_once 'Controller/formulaire.php';
-include_once 'Modele/requete.php';
+include_once '../Controller/formulaire.php';
+include_once '../Modele/requete.php';
+include_once '../Controller/tools.php';
 
 if(isset($_GET['enregistrerInp'])){
 	$columnArray = array('*');

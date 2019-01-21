@@ -58,4 +58,13 @@ function dateActuel($datePost)
 		return (round($diff/31557600).' annees');
 }
 
+function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
+	$arrayInpName = array('motFinalDb', 'motInit' , 'monMot', $nameSubmit);
+	$arrayInpValue = array($motFinalDb, $motInit , $monMot, 'Valider ce mot');
+	$arrayInptype = array('hidden', 'hidden', 'hidden', 'submit');
+	$arrayInpClass = array('', '', '', 'btn btn-success');
+	$randomForm = new formulaire('#', 'get', $nameForm, $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+	$randomForm->displayForm();
+}
+
 ?>
