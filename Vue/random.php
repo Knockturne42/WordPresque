@@ -12,11 +12,57 @@ function validerMot($motFinalDb, $motInit, $monMot, $nameForm, $nameSubmit){
 	$randomForm->displayForm();
 }
 
+if(isset($_GET['submitDef'])){
+	//Insertion de la définition dans def
+	$defValue = $_GET['defArea'];
+	$motFinalDb = $_GET['motFinal'];
+	$columnArray = array('defMot', 'nbPlusDef', 'nbMoinsDef');
+	$valueArray = array($defValue, 1, 0);
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$defInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '');
+	$defInsert->insertDb();
+	//Insertion de la ligne dans la table d'association definit
+	//Récupération de l'ID ajouté dans la table Def
+	$columnArray = array('idDef');
+	$valueArray = array('0');
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$condition = 'defMot LIKE "'.$defValue.'" ';
+	$selectIdDef = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '', $condition);
+	$selectIdDef->selectDb();
+	$idDef = $selectIdDef->queryDb->fetch();
+	$idDef = $idDef['idDef'];
+	//Récupération de l'idAssoc du mot dans la table association
+	$columnArray = array('idAssoc');
+	$valueArray = array('0');
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
+	$selectIdAssoc = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+	$selectIdAssoc->selectDb();
+	$idAssoc = $selectIdAssoc->queryDb->fetch();
+	$idAssoc = $idAssoc['idAssoc'];
+	//Insertion dans la table definit
+	$columnArray = array('idDef', 'idAssoc');
+	$valueArray = array( $idDef, $idAssoc);
+	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
+	$definitInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'definit', '');
+	$definitInsert->insertDb();
+	echo '<div class="card w-90 text-white bg-dark text-center">';
+	echo '<div class="card-body">';
+	echo 'Le mot et sa définition ont bien été partagés';
+	$arrayInpName = array('generer');
+	$arrayInpValue = array('Générer un nouveau jeu de mot aléatoire');
+	$arrayInptype = array('submit');
+	$arrayInpClass = array('btn btn-success');
+	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+	$randomForm->displayForm();
+	echo '</div></div>';
+}
 if(isset($_GET['enregistrerRnd'])){
+	$motFinalDb= $_GET['motFinalDb'];
 	$columnArray = array('*');
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
-	$condition = 'motAssoc LIKE "'.$_GET['motFinalDb'].'" ';
+	$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
 	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
 	$selectMot->selectDb();
 
@@ -27,9 +73,20 @@ if(isset($_GET['enregistrerRnd'])){
 		$valueArray= array($_GET['motFinalDb'], $_GET['motInit'], $_GET['monMot'], 1, 0, date("Y-m-d H:i:s"));
 		$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
 		$insertMots->insertDb();
+		echo '<div class="card w-90 text-white bg-secondary text-center">';
+		echo '<div class="card-header">';
+		echo 'Ajouter une définition au mot: '.$motFinalDb.'</div>';
+		echo '<div class="card-body">';
+		$arrayInpName = array('defArea', 'motFinal', 'submitDef');
+		$arrayInpValue = array('', $motFinalDb, 'Valider cette définition');
+		$arrayInptype = array('text', 'hidden', 'submit');
+		$arrayInpClass = array('', '', 'btn btn-success');
+		$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+		$randomForm->displayForm();
+		echo '</div></div>';
 	}
 	else {
-		echo "mot deja enregistrer";
+		echo "Mot déjà enregistré";
 	}
 }
 
