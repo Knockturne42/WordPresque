@@ -44,9 +44,8 @@ if(isset($_GET['submitDef'])){
 	$arrayInpName = array('generer');
 	$arrayInpValue = array('Générer un nouveau jeu de mot aléatoire');
 	$arrayInptype = array('submit');
-	$arrayInpClass = array('btn btn-success');
-	$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
-	$randomForm->displayForm();
+	$arrayInpClass = array('btn btn-success" id="newJeu');
+	echo arrayInputs($arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
 	echo '</div></div>';
 }
 if(isset($_GET['enregistrerRnd'])){
@@ -72,9 +71,8 @@ if(isset($_GET['enregistrerRnd'])){
 		$arrayInpName = array('defArea', 'motFinal', 'submitDef');
 		$arrayInpValue = array('', $motFinalDb, 'Valider cette définition');
 		$arrayInptype = array('text', 'hidden', 'submit');
-		$arrayInpClass = array('', '', 'btn btn-success');
-		$randomForm = new formulaire('#', 'get', 'random', $arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
-		$randomForm->displayForm();
+		$arrayInpClass = array('" id="def', '" id="motDef', 'btn btn-success" id="subDef');
+		echo arrayInputs($arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
 		echo '</div></div>';
 	}
 	else {
