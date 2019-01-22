@@ -73,7 +73,7 @@ genererUser.addEventListener("keypress", function(e){
 								if (httpRequest.readyState === 4)
 								document.getElementById('result').innerHTML = httpRequest.responseText;
 							}
-							httpRequest.open('GET', './Vue/userChoice?defArea='+def.value+'&motFinal='+motDef.value+'&submitDef='+1+'', true);
+							httpRequest.open('GET', './Vue/userChoice?defArea='+def.value+'&motFinal='+motDef.value+'&submitDefChoice='+1+'', true);
 							httpRequest.send();
 					});
 				}, 500);
