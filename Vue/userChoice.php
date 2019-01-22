@@ -81,7 +81,7 @@ if(isset($_GET['enregistrerInp'])){
 
 
 if(isset($_GET['userValue'])) {
-	echo '<div class="card w-50 text-white bg-dark text-center">';
+	echo '<div class="card w-90 text-white bg-dark text-center">';
 	echo '<div class="card-body">';
 	$search = substr($_GET['userValue'], -2);
 	$columnArray = array('idMot', 'orthMot');
