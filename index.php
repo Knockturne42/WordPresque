@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>WordPresque</title>
 	<link rel="stylesheet" href="Vue/style.css">
-	<link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css" >
 </head>
 <body>
 	<?php include 'Vue/header.php'; ?>
