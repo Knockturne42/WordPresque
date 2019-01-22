@@ -7,8 +7,8 @@
 
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <p class="nav-link" id="index">Générateurs <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <p class="nav-link" id="index">Générateurs <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <p class="nav-link" id="topGame">Tops</p>

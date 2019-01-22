@@ -107,7 +107,7 @@ if(isset($_GET['generer'])) {
 				$selectMot->selectDb();
 		}
 		$motInit = $mot['orthMot'];
-		$search = substr($motInit, -2);
+		$search = substr($motInit, -intval(($_GET['rangeGenerator'])));
 		$columnArray = array('idMot', 'orthMot');
 		$valueArray = array('0', '1');
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
@@ -125,8 +125,8 @@ if(isset($_GET['generer'])) {
 		else
 		{
 			$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)]['orthMot'];
-			$motFinalDb = substr($motInit, 0, -2).$monMot;
-			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -2).'<span>'.$monMot.'</span></p>';
+			$motFinalDb = substr($motInit, 0, -intval(($_GET['rangeGenerator']))).$monMot;
+			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -intval(($_GET['rangeGenerator']))).'<span>'.$monMot.'</span></p>';
 			echo '<h3 class="card-title">';
 			echo $motFinal;
 			echo '</h3>';

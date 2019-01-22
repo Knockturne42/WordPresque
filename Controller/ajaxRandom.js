@@ -6,7 +6,7 @@ function initGenerator(){
 			if (httpRequest.readyState === 4)
 			document.getElementById('result').innerHTML = httpRequest.responseText;
 		}
-		httpRequest.open('GET', './Vue/random.php?generer=Jeu+de+mot+aléatoire', true);
+		httpRequest.open('GET', './Vue/random.php?generer=Jeu+de+mot+aléatoire&rangeGenerator='+document.getElementById('rangeGenerator').value, true);
 		httpRequest.send();
 		setTimeout(function(){var motDb = document.getElementById('motDb');	console.log(motDb); }, 500);
 		setTimeout(function(){var mot1 = document.getElementById('mot1');	console.log(mot1); }, 500);
@@ -48,7 +48,7 @@ function initGenerator(){
 				if (httpRequest.readyState === 4)
 				document.getElementById('result').innerHTML = httpRequest.responseText;
 			}
-			httpRequest.open('GET', './Vue/userChoice.php?userValue='+genererUser.value+'', true);
+			httpRequest.open('GET', './Vue/userChoice.php?userValue='+genererUser.value+'&rangeGenerator='+document.getElementById('rangeGenerator').value, true);
 			httpRequest.send();
 			setTimeout(function(){var motDb = document.getElementById('motDb');	console.log(motDb); }, 500);
 			setTimeout(function(){var mot1 = document.getElementById('mot1');	console.log(mot1); }, 500);

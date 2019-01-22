@@ -80,10 +80,11 @@ if(isset($_GET['enregistrerInp'])){
 }
 
 
-if(isset($_GET['userValue'])) {
+if(isset($_GET['userValue']) && strlen($_GET['userValue']) >= intval(($_GET['rangeGenerator']))) {
+	var_dump($_GET);
 	echo '<div class="card w-90 text-white bg-dark text-center">';
 	echo '<div class="card-body">';
-	$search = substr($_GET['userValue'], -2);
+	$search = substr($_GET['userValue'], -intval(($_GET['rangeGenerator'])));
 	$columnArray = array('idMot', 'orthMot');
 	$valueArray = array('0', '1');
 	// $dbConnectionArray = array('localhost', 'wordpresque', 'test', 'test00');
@@ -98,7 +99,7 @@ if(isset($_GET['userValue'])) {
 		$tmpArray = array($mot, 1);
 		array_push($arrayResult, $tmpArray);
 	}
-	$search = substr($_GET['userValue'], 0, 2);
+	$search = substr($_GET['userValue'], 0, intval(($_GET['rangeGenerator'])));
 	$condition = 'orthMot LIKE "%'.$search.'" ';
 	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
 	$selectMot->selectDb();
@@ -114,13 +115,13 @@ if(isset($_GET['userValue'])) {
 		$monMot = $arrayResult[rand(0, sizeof($arrayResult)-1)];
 		if ($monMot[1] == 1)
 		{
-			$motFinalDb = substr($_GET['userValue'], 0, -2).$monMot[0]['orthMot'];
-			$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -2).'<span>'.$monMot[0]['orthMot'].'</span></p>';
+			$motFinalDb = substr($_GET['userValue'], 0, -intval(($_GET['rangeGenerator']))).$monMot[0]['orthMot'];
+			$motFinal = '<p class="jeuDeMot">'.substr($_GET['userValue'], 0, -intval(($_GET['rangeGenerator']))).'<span>'.$monMot[0]['orthMot'].'</span></p>';
 		}
 		else
 		{
-			$motFinalDb = substr($monMot[0]['orthMot'], 0, -2).$_GET['userValue'];
-			$motFinal = '<p class="jeuDeMot"><span>'.substr($monMot[0]['orthMot'], 0, -2).'</span>'.$_GET['userValue'].'</p>';
+			$motFinalDb = substr($monMot[0]['orthMot'], 0, -intval(($_GET['rangeGenerator']))).$_GET['userValue'];
+			$motFinal = '<p class="jeuDeMot"><span>'.substr($monMot[0]['orthMot'], 0, -intval(($_GET['rangeGenerator']))).'</span>'.$_GET['userValue'].'</p>';
 		}
 		echo '<h3 class="card-title">';
 		echo $motFinal;
