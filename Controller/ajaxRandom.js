@@ -47,7 +47,7 @@ genererUser.addEventListener("keypress", function(e){
 			if (httpRequest.readyState === 4)
 			document.getElementById('result').innerHTML = httpRequest.responseText;
 		}
-		httpRequest.open('GET', './Vue/userChoice?userValue='+genererUser.value+'', true);
+		httpRequest.open('GET', './Vue/userChoice.php?userValue='+genererUser.value+'', true);
 		httpRequest.send();
 		setTimeout(function(){var motDb = document.getElementById('motDb');	console.log(motDb); }, 500);
 		setTimeout(function(){var mot1 = document.getElementById('mot1');	console.log(mot1); }, 500);
@@ -60,7 +60,7 @@ genererUser.addEventListener("keypress", function(e){
 					if (httpRequest.readyState === 4)
 					document.getElementById('result').innerHTML = httpRequest.responseText;
 				}
-				httpRequest.open('GET', './Vue/userChoice?motFinalDb='+motDb.value+'&motInit='+mot1.value+'&monMot='+mot2.value+'&enregistrerInp='+1+'', true);
+				httpRequest.open('GET', './Vue/userChoice.php?motFinalDb='+motDb.value+'&motInit='+mot1.value+'&monMot='+mot2.value+'&enregistrerInp='+1+'', true);
 				httpRequest.send();
 				setTimeout(function(){var def = document.getElementById('def');	console.log(def); }, 500);
 				setTimeout(function(){var motDef = document.getElementById('motDef');	console.log(motDef); }, 500);
@@ -72,7 +72,7 @@ genererUser.addEventListener("keypress", function(e){
 								if (httpRequest.readyState === 4)
 								document.getElementById('result').innerHTML = httpRequest.responseText;
 							}
-							httpRequest.open('GET', './Vue/userChoice?defArea='+def.value+'&motFinal='+motDef.value+'&submitDefChoice='+1+'', true);
+							httpRequest.open('GET', './Vue/userChoice.php?defArea='+def.value+'&motFinal='+motDef.value+'&submitDefChoice='+1+'', true);
 							httpRequest.send();
 					});
 				}, 500);
