@@ -8,15 +8,15 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Générateurs <span class="sr-only">(current)</span></a>
+        <p class="nav-link" id="index">Générateurs <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Vue/topJeux.php">Tops</a>
+        <p class="nav-link" id="topGame">Tops</p>
       </li>
     </ul>
   </div>
 </nav>
 <div id="containerLogo">
-    <a href="index.php" id="logo"><img src="Conception/icon.png" alt="Logo Wordpresque"></a>
+    <img src="Conception/icon.png" alt="Logo Wordpresque" id="logo">
 </div>
 </header>

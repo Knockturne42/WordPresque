@@ -1,4 +1,3 @@
-<div class="container">
 <div id="rndDiv" class="row justify-content-center">
     <div class="col-lg-6 col-md-9">
 <!--         <div id="genererRnd" class="boutons col btn btn-lg btn-outline-dark"><p>Jeu de mot aléatoire</p></div>

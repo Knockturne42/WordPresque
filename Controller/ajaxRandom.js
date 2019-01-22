@@ -80,3 +80,36 @@ genererUser.addEventListener("keypress", function(e){
 		}, 500);
 	}
 });
+
+var topGame = document.getElementById('topGame');
+topGame.addEventListener('click', function(){
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function (argument) {
+	if (httpRequest.readyState === 4)
+		document.getElementById('main').innerHTML = httpRequest.responseText;
+	}
+	httpRequest.open('GET', './Vue/showTops.php', true);
+	httpRequest.send();
+});
+
+var index = document.getElementById('index');
+index.addEventListener('click', function(){
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function (argument) {
+	if (httpRequest.readyState === 4)
+		document.getElementById('main').innerHTML = httpRequest.responseText;
+	}
+	httpRequest.open('GET', './Vue/main.php', true);
+	httpRequest.send();
+});
+
+var logo = document.getElementById('logo');
+logo.addEventListener('click', function(){
+	var httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = function (argument) {
+	if (httpRequest.readyState === 4)
+		document.getElementById('main').innerHTML = httpRequest.responseText;
+	}
+	httpRequest.open('GET', './Vue/main.php', true);
+	httpRequest.send();
+});
