@@ -40,11 +40,11 @@ if(isset($_GET['submitDefChoice'])){
 	echo '<div class="card w-90 text-white bg-dark text-center">';
 	echo '<div class="card-body">';
 	echo 'Le mot et sa définition ont bien été partagés';
-	$arrayInpName = array('generer');
-	$arrayInpValue = array('Générer un nouveau jeu de mot aléatoire');
-	$arrayInptype = array('submit');
-	$arrayInpClass = array('btn btn-success" id="newJeu');
-	echo arrayInputs($arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
+	// $arrayInpName = array('generer');
+	// $arrayInpValue = array('Générer un nouveau jeu de mot aléatoire');
+	// $arrayInptype = array('submit');
+	// $arrayInpClass = array('btn btn-success" id="newJeu');
+	// echo arrayInputs($arrayInpName, $arrayInptype, $arrayInpValue, $arrayInpClass);
 	echo '</div></div>';
 }
 if(isset($_GET['enregistrerInp'])){

@@ -53,7 +53,6 @@ genererUser.addEventListener("keypress", function(e){
 		setTimeout(function(){var mot1 = document.getElementById('mot1');	console.log(mot1); }, 500);
 		setTimeout(function(){var mot2 = document.getElementById('mot2');	console.log(mot2); }, 500);
 		setTimeout(function(){
-		// localhost/wordpresque/?motFinalDb=z%C3%A9nithibaud&motInit=thibaud&monMot=z%C3%A9nith&enregistrerInp=Valider+ce+mot#
 		var validerMot = document.getElementById('validerMot');
 		validerMot.addEventListener("click", function(){
 				var httpRequest = new XMLHttpRequest();
