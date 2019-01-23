@@ -145,9 +145,6 @@ if(isset($_GET['generer'])) {
 			else
 				echo "nom existant dans la db";
 			return $motFinal;
-			?>
-			 <input onclick='responsiveVoice.speak("<?php echo $motFinal; ?>", "French Female");' type='button' value='🔊 Play' />
-			<?
 		}
 	}
 	$mot = null;
