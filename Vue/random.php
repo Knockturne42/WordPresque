@@ -129,6 +129,9 @@ if(isset($_GET['generer'])) {
 			$motFinal = '<p class="jeuDeMot">'.substr($motInit, 0, -intval(($_GET['rangeGenerator']))).'<span>'.$monMot.'</span></p>';
 			echo '<h3 class="card-title">';
 			echo $motFinal;
+			?>
+			 <input onclick='responsiveVoice.speak("<?php echo $motInit, $monMot; ?>", "French Female");' type='button' value='🔊 Play' />
+			<?
 			echo '</h3>';
 			$columnArray = array('*');
 			$valueArray = array('0');
@@ -142,7 +145,9 @@ if(isset($_GET['generer'])) {
 			else
 				echo "nom existant dans la db";
 			return $motFinal;
-			
+			?>
+			 <input onclick='responsiveVoice.speak("<?php echo $motFinal; ?>", "French Female");' type='button' value='🔊 Play' />
+			<?
 		}
 	}
 	$mot = null;
@@ -156,4 +161,3 @@ if(isset($_GET['generer'])) {
 }
 
 ?>
-
