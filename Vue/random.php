@@ -11,7 +11,7 @@ if(isset($_GET['submitDef'])){
 	$columnArray = array('defMot', 'nbPlusDef', 'nbMoinsDef');
 	$valueArray = array($defValue, 1, 0);
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
-	$defInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '');
+	$defInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '', '');
 	$defInsert->insertDb();
 	//Insertion de la ligne dans la table d'association definit
 	//Récupération de l'ID ajouté dans la table Def
@@ -19,7 +19,7 @@ if(isset($_GET['submitDef'])){
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 	$condition = 'defMot LIKE "'.$defValue.'" ';
-	$selectIdDef = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '', $condition);
+	$selectIdDef = new requete($dbConnectionArray, $columnArray, $valueArray, 'def', '', '', $condition);
 	$selectIdDef->selectDb();
 	$idDef = $selectIdDef->queryDb->fetch();
 	$idDef = $idDef['idDef'];
@@ -28,7 +28,7 @@ if(isset($_GET['submitDef'])){
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 	$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
-	$selectIdAssoc = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+	$selectIdAssoc = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '', $condition);
 	$selectIdAssoc->selectDb();
 	$idAssoc = $selectIdAssoc->queryDb->fetch();
 	$idAssoc = $idAssoc['idAssoc'];
@@ -36,7 +36,7 @@ if(isset($_GET['submitDef'])){
 	$columnArray = array('idDef', 'idAssoc');
 	$valueArray = array( $idDef, $idAssoc);
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
-	$definitInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'definit', '');
+	$definitInsert = new requete($dbConnectionArray, $columnArray, $valueArray, 'definit', '', '');
 	$definitInsert->insertDb();
 	echo '<div class="card w-90 text-white bg-dark text-center">';
 	echo '<div class="card-body">';
@@ -54,7 +54,7 @@ if(isset($_GET['enregistrerRnd'])){
 	$valueArray = array('0');
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 	$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
-	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+	$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '', $condition);
 	$selectMot->selectDb();
 
 	if (!($dbMot = $selectMot->queryDb->fetch()))
@@ -62,7 +62,7 @@ if(isset($_GET['enregistrerRnd'])){
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 		$columnArray= array('motAssoc', 'mot1', 'mot2', 'nbPlus', 'nbMoins', 'timeAssoc');
 		$valueArray= array($_GET['motFinalDb'], $_GET['motInit'], $_GET['monMot'], 1, 0, date("Y-m-d H:i:s"));
-		$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '');
+		$insertMots= new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '');
 		$insertMots->insertDb();
 		echo '<div class="card w-90 text-white bg-secondary text-center">';
 		echo '<div class="card-header">';
@@ -91,7 +91,7 @@ if(isset($_GET['generer'])) {
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 		$condition = 'idMot LIKE "'.$num.'" ';
 
-		$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
+		$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', '', $condition);
 
 		$selectMot->selectDb();
 		while(!($mot = $selectMot->queryDb->fetch()))
@@ -102,7 +102,7 @@ if(isset($_GET['generer'])) {
 				$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 				$condition = 'idMot LIKE "'.$num.'" ';
 
-				$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
+				$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', '', $condition);
 
 				$selectMot->selectDb();
 		}
@@ -113,7 +113,7 @@ if(isset($_GET['generer'])) {
 		$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 		$condition = 'orthMot LIKE "'.$search.'%" ';
 
-		$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', $condition);
+		$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'mots', '', '', $condition);
 		$selectMot->selectDb();
 		$arrayResult = array();
 		while($mot = $selectMot->queryDb->fetch())
@@ -138,7 +138,7 @@ if(isset($_GET['generer'])) {
 			$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 			$condition = 'motAssoc LIKE "'.$motFinalDb.'" ';
 
-			$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', $condition);
+			$selectMot = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '', $condition);
 			$selectMot->selectDb();
 			if (!($dbMot = $selectMot->queryDb->fetch()))
 				validerMot($motFinalDb, $motInit, $monMot, 'random', 'enregistrerRnd');

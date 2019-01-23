@@ -14,8 +14,9 @@ class requete extends connectionDb
 	private $condition;
 	private $setArray;
 	private $left;
+	private $endSql;
 
-	public function __construct($dbConnectionArray, $columnArray, $valueArray, $tableName, $left, $condition = '1 ')
+	public function __construct($dbConnectionArray, $columnArray, $valueArray, $tableName, $left, $endSql, $condition = '1 ')
 	{
 		$this->db = parent::__construct($dbConnectionArray[0], $dbConnectionArray[1], $dbConnectionArray[2], $dbConnectionArray[3]);
 		$this->columnArray = $columnArray;
@@ -25,6 +26,7 @@ class requete extends connectionDb
 		$this->condition = $condition;
 		$this->setArray = setArrayFct($this->columnArray, $this->valueArray);
 		$this->left = $left;
+		$this->endSql = $endSql;
 	}
 
 	public function __set($property, $value)
@@ -46,8 +48,8 @@ class requete extends connectionDb
 	public function selectDb()
 	{
 
-			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1');
-			// var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1');
+			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
+			// var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
 			$this->queryDb->execute();
 	}
 
