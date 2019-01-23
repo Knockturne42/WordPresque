@@ -2,6 +2,7 @@
 include_once '../Controller/formulaire.php';
 include_once '../Modele/requete.php';
 include_once '../Controller/tools.php';
+include_once '../Controller/billet.php';
 ?>
 
 <?php
@@ -33,7 +34,7 @@ $selectWord->selectDb();
 $wordDef = $selectWord->queryDb->fetch();
 $wordDef = $wordDef['motAssoc'];
 ?>
-<label for="tri">trier par le plus:</label>
+<label for="tri">Trier par le plus:</label>
 <select name="tri" id="orderBy">
   <option value="recent" selected>Récent</option>
   <option value="recent">Ancien</option>
@@ -61,3 +62,4 @@ $wordDef = $wordDef['motAssoc'];
     <button class="likes btn btn-secondary fas fa-thumbs-up"><button class="likes btn btn-danger fas fa-thumbs-down">
   </div>
 </div>
+
