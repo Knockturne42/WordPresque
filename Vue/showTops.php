@@ -33,7 +33,14 @@ $selectWord->selectDb();
 $wordDef = $selectWord->queryDb->fetch();
 $wordDef = $wordDef['motAssoc'];
 ?>
-
+<label for="tri">trier par le plus:</label>
+<select name="tri" id="orderBy">
+  <option value="recent" selected>Récent</option>
+  <option value="recent">Ancien</option>
+  <option value="recent">Aimé</option>
+  <option value="recent">Detesté</option>
+  <option value="recent">Controversé</option>
+</select>
 <div class="card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">Dernier mot partagé</div>
   <div class="card-body">

@@ -103,7 +103,7 @@ index.addEventListener('click', function(){
 	}
 	httpRequest.open('GET', './Vue/main.php', true);
 	httpRequest.send();
-	setTimeout(function(){initGenerator();}, 500);
+	setTimeout(function(){initGenerator();initRange();}, 500);
 });
 
 var logo = document.getElementById('logo');
@@ -115,7 +115,25 @@ logo.addEventListener('click', function(){
 	}
 	httpRequest.open('GET', './Vue/main.php', true);
 	httpRequest.send();
-	setTimeout(function(){initGenerator();}, 500);
+	setTimeout(function(){initGenerator();initRange();}, 500);
 });
 
+var audio = new Audio('Conception/0564.wav');
+var boutonGauche = document.getElementById('genererRnd');
+boutonGauche.addEventListener('click', function(){
+    audio.play();
+})
+
+function initRange()
+{
+	var range = document.getElementById('rangeGenerator');
+	var displayRange = document.getElementById('valueRange');
+	displayRange.innerHTML=range.value;
+
+	range.oninput = function(){
+	    displayRange.innerHTML= this.value;
+	}
+}
+
 initGenerator();
+initRange();
