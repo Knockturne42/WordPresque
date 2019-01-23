@@ -38,6 +38,7 @@ $wordDef = $wordDef['motAssoc'];
   <div class="card-header">Dernier mot partagé</div>
   <div class="card-body">
     <h4 class="card-title"><?php echo $lastWord; ?></h4>
+    <input onclick='responsiveVoice.speak("<?php echo $lastWord; ?>", "French Female");' type='button' value='🔊 Play' />
   </div>
 </div>
 <div class="card border-primary mb-3" style="max-width: 20rem;">

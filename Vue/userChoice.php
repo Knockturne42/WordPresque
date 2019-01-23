@@ -81,7 +81,6 @@ if(isset($_GET['enregistrerInp'])){
 
 
 if(isset($_GET['userValue']) && strlen($_GET['userValue']) >= intval(($_GET['rangeGenerator']))) {
-	var_dump($_GET);
 	echo '<div class="card w-90 text-white bg-dark text-center">';
 	echo '<div class="card-body">';
 	$search = substr($_GET['userValue'], -intval(($_GET['rangeGenerator'])));
