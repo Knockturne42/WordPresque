@@ -47,11 +47,17 @@ $wordDef = $wordDef['motAssoc'];
     <h4 class="card-title"><?php echo $lastWord; ?></h4>
     <input onclick='responsiveVoice.speak("<?php echo $lastWord; ?>", "French Female");' type='button' value='🔊 Play' />
   </div>
+  <div class="card-footer text-muted d-flex justify-content-between">
+    <button class="likes btn btn-secondary fas fa-thumbs-up"><button class="likes btn btn-danger fas fa-thumbs-down">
+  </div>
 </div>
 <div class="card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">Dernier mot partagé avec sa définition</div>
   <div class="card-body">
     <h4 class="card-title"><?php echo $wordDef; ?></h4>
     <p class="card-text"><?php echo $lastDef; ?></p>
+  </div>
+  <div class="card-footer text-muted d-flex justify-content-between">
+    <button class="likes btn btn-secondary fas fa-thumbs-up"><button class="likes btn btn-danger fas fa-thumbs-down">
   </div>
 </div>
