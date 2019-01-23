@@ -131,7 +131,7 @@ if(isset($_GET['generer'])) {
 			echo $motFinal;
 			?>
 			 <input onclick='responsiveVoice.speak("<?php echo $motInit, $monMot; ?>", "French Female");' type='button' value='🔊 Play' />
-			<?
+			<?php
 			echo '</h3>';
 			$columnArray = array('*');
 			$valueArray = array('0');
@@ -156,5 +156,4 @@ if(isset($_GET['generer'])) {
 	echo '</div></div>';
 	
 }
-
 ?>
