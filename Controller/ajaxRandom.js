@@ -92,6 +92,26 @@ topGame.addEventListener('click', function(){
 	}
 	httpRequest.open('GET', './Vue/showTops.php', true);
 	httpRequest.send();
+	setTimeout(function(){
+		var orderBy = document.getElementById('orderBy');
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = function (argument) {
+		if (httpRequest.readyState === 4)
+			document.getElementById('divTop').innerHTML = httpRequest.responseText;
+		}
+		httpRequest.open('GET', './Controller/displayJeux.php?orderBy='+orderBy.value, true);
+		httpRequest.send();
+		orderBy.addEventListener('change', function(){
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function (argument) {
+			if (httpRequest.readyState === 4)
+				document.getElementById('divTop').innerHTML = httpRequest.responseText;
+			}
+			httpRequest.open('GET', './Controller/displayJeux.php?orderBy='+orderBy.value, true);
+			httpRequest.send();
+			
+		});
+	}, 500);
 });
 
 var index = document.getElementById('index');
@@ -133,6 +153,23 @@ function initRange()
 	range.oninput = function(){
 	    displayRange.innerHTML= this.value;
 	}
+}
+
+function clickLike(idBut) {
+	console.log(idBut);
+	var idButton = document.getElementById(idBut);
+	idButton.addEventListener('click', function(){
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = function (argument) {
+		if (httpRequest.readyState === 4)
+			document.getElementById('main').innerHTML = httpRequest.responseText;
+		}
+		if(idBut[0] == "p")
+			httpRequest.open('GET', './Controller/vote.php?like=nbPlus&mot='+idBut.substr(4), true);
+		else
+			httpRequest.open('GET', './Controller/vote.php?like=nbMoins&mot='+idBut.substr(4), true);
+		httpRequest.send();
+	});
 }
 
 initGenerator();

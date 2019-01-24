@@ -41,7 +41,7 @@
                 <li class="list-group-item">'.$this->mot1.' + '.$this->mot2.'</li>
                 <li class="list-group-item">Définition: '.$this->def.'</li>
             </ul>
-            <div class="card-footer text-muted d-flex justify-content-between"><button class="likes btn btn-secondary fas fa-thumbs-up"><button class="likes btn btn-danger fas fa-thumbs-down"></div></div>';
+            <div class="card-footer text-muted d-flex justify-content-between"><button onclick="clickLike(\'plus'.$this->mot.'\')" id="plus'.$this->mot.'" class="likes btn btn-secondary fas fa-thumbs-up"><button onclick="clickLike(\'moins'.$this->mot.'\')" id="moins'.$this->mot.'" class="likes btn btn-danger fas fa-thumbs-down"></div></div>';
         }
    }
 ?>

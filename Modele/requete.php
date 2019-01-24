@@ -49,7 +49,7 @@ class requete extends connectionDb
 	{
 
 			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
-			// var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
+			var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
 			$this->queryDb->execute();
 	}
 
