@@ -1,6 +1,6 @@
 {
-    "hostname":"localhost",
-    "dbname":"wordpresque",
-    "dbuser":"test",
-    "dbpassword":"test00"
+    "hostname":"",
+    "dbname":"",
+    "dbuser":"",
+    "dbpassword":""
 }
