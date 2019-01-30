@@ -1,6 +1,6 @@
 {
-    "hostname":"192.168.1.20",
-    "dbname":"dcl.nanarchie",
-    "dbuser":"dcl.nanarchie",
-    "dbpassword":"thixitin"
+    "hostname":"localhost",
+    "dbname":"wordpresque",
+    "dbuser":"test",
+    "dbpassword":"test00"
 }

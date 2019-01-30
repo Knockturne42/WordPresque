@@ -49,22 +49,20 @@ class requete extends connectionDb
 	{
 
 			$this->queryDb = $this->db->prepare('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
-			var_dump('SELECT '.arrayPrepare($this->columnArray, '').' FROM '.$this->tableName.$this->left.' WHERE '.$this->condition.'AND 1'.$this->endSql);
 			$this->queryDb->execute();
 	}
 
 	public function insertDb()
 	{
 		$this->queryDb = $this->db->prepare('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
-		//var_dump('INSERT INTO '.$this->tableName.'('.arrayPrepare($this->columnArray, '').') VALUES ('.arrayPrepare($this->columnArray, ':').')');
 		$this->arrayBindParam($this->columnArray);
 		$this->queryDb->execute();
 	}
 
 	public function updateDb()
 	{
-		$this->queryDb = $this->db->prepare('UPDATE '.$this->tableName.' SET '.arrayPrepare($this->setArray, '').' WHERE 1 AND '.arrayPrepare($this->condition, ':').' 1');
-		$this->arrayBindParam($this->condition);
+		$this->queryDb = $this->db->prepare('UPDATE '.$this->tableName.' SET '.arrayPrepare($this->setArray, '').' WHERE '.$this->condition.' AND 1');
+		$this->arrayBindParam($this->setArray);
 		$this->queryDb->execute();
 	}
 

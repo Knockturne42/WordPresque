@@ -32,7 +32,7 @@ function setArrayFct($column, $value)
 	if (count($column) === count($value))
 	{
 		for ($i = count($value) - 1; $i >= 0 ; $i--) { 
-			array_push($array, $column[$i].' = "'.$value[$i].'"');
+			array_push($array, $column[$i].' = '.$value[$i].'');
 		}
 	}
 	return $array;

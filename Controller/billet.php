@@ -31,7 +31,7 @@
                 throw new Exception("property invalid", 1);
         }
         public function assembleBillet(){
-            echo '<div class="card border-primary mb-3" style="max-width: 20rem;">
+            echo '<div class="card border-primary mb-3">
             <div class="card-header">'.$this->titre.'</div>
             <div class="card-body d-flex justify-content-between">
             <h4 class="card-title">'.$this->mot.'</h4>

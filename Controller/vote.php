@@ -13,9 +13,9 @@ function selectLike($likeDis, $word)
 	$condition = 'motAssoc LIKE "'.$word.'" ';
 	$selectDef = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '', $condition);
 	$selectDef->selectDb();
-
+	$nbLike = $selectDef->queryDb->fetch();
 	$columnArray = array($likeDis);
-	$valueArray = array((intval($likeDis)+1));
+	$likeDis == 'nbPlus' ? $valueArray = array(($nbLike['nbPlus']+1)) : $valueArray = array(($nbLike['nbMoins']+1));
 	$dbConnectionArray = array('192.168.1.20', 'dcl.nanarchie', 'dcl.nanarchie', 'thixitin');
 	$condition = 'motAssoc LIKE "'.$word.'" ';
 	$selectDef = new requete($dbConnectionArray, $columnArray, $valueArray, 'association', '', '', $condition);

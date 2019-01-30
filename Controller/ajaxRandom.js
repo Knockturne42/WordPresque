@@ -167,7 +167,7 @@ function clickLike(idBut) {
 		if(idBut[0] == "p")
 			httpRequest.open('GET', './Controller/vote.php?like=nbPlus&mot='+idBut.substr(4), true);
 		else
-			httpRequest.open('GET', './Controller/vote.php?like=nbMoins&mot='+idBut.substr(4), true);
+			httpRequest.open('GET', './Controller/vote.php?like=nbMoins&mot='+idBut.substr(5), true);
 		httpRequest.send();
 	});
 }

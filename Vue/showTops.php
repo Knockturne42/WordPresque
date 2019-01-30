@@ -6,4 +6,4 @@
   <option value="dislike">Detesté</option>
   <option value="likeDis">Controversé</option>
 </select>
-<div id="divTop" class="card-columns"></div>
+<div id="divTop" class=""></div>
